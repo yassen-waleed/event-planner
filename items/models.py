@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import Vendor, Customer
+from users.models import User
 
 
 # Create your models here.
@@ -28,7 +28,7 @@ class Item(models.Model):
     link = models.CharField(max_length=600, blank=False)
     about = models.CharField(max_length=1000, blank=False)
     price = models.TextField(blank=False)
-    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
+    vendor = models.ForeignKey(User, on_delete=models.CASCADE)
     rate=models.ForeignKey(Rate,on_delete=models.CASCADE)
 
 
@@ -38,7 +38,7 @@ class Item(models.Model):
 class customer_rating(models.Model):
 
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class type(models.Model):
