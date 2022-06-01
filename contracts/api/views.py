@@ -10,9 +10,11 @@ from contracts.models import Contract
 def ApiOverview(request):
     api_urls = {
         'all_contracts': '/',
-        'Add': 'create',
+        'Add': '/create',
         'Update': 'update/pk',
+        'Delete': '/contract/pk/delete'
     }
+
     return Response(api_urls)
 
 
@@ -37,6 +39,7 @@ def all_contracts(request):
         return Response(serializer.data)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 @api_view(['PUT'])
 def update_contracts(request, pk):
