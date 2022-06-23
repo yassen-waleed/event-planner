@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include("users.api.urls")),
     path('guests/', include("guests.api.urls")),
     path('feedbacks/', include("feedbacks.api.urls")),
-    path('contract/', include("contracts.api.urls"))
+    path('contract/', include("contracts.api.urls")),
+    path('event/', include("events.api.urls")),
+    path('item/', include("Items.api.urls"))
 ]

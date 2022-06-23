@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.core.mail.backends import smtp
+from django.template.backends import django
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +42,7 @@ INSTALLED_APPS = [
     'users',
     'rest_framework',
     'rest_framework.authtoken',
-    'items',
+    'Items',
     'guests',
     'events',
     'feedbacks',
@@ -160,3 +163,10 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT"
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'palestineplanner@gmail.com'
+EMAIL_HOST_PASSWORD = 'ywlwsxzugydmnffq'
