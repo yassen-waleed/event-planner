@@ -18,8 +18,8 @@ class Amenities(models.Model):
 
 
 class availability_date(models.Model):
-    start_time = models.DateTimeField(null=False, blank=False)
-    end_date = models.DateTimeField(null=False, blank=False)
+    start_time = models.TimeField(null=False, blank=False)
+    end_date = models.TimeField(null=False, blank=False)
 
 
 class images(models.Model):
@@ -35,7 +35,7 @@ class Item(models.Model):
     location = models.CharField(max_length=300, blank=False)
     phone = models.TextField(blank=False)
     link = models.CharField(max_length=600, blank=False)
-    about = models.CharField(max_length=1000, blank=False)
+    about = models.TextField(blank=False)
     price = models.FloatField(blank=False)
     vendor_id = models.CharField(max_length=10, blank=False)
     rate = models.TextField(max_length=10)

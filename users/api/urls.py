@@ -1,7 +1,7 @@
 from django.urls import path
 
-from Items import views
-from .views import (  CustomAuthToken, CustomerSignupView, LogoutView, CustomerOnlyView,VendorOnlyView,ManagerOnlyView, VendorSignupView)
+
+from .views import (  CustomAuthToken, CustomerSignupView, LogoutView, CustomerOnlyView,VendorOnlyView,ManagerOnlyView, VendorSignupView , view_users)
 
 urlpatterns=[
     path('signup/customer', CustomerSignupView.as_view()),
@@ -11,5 +11,5 @@ urlpatterns=[
     path('customer/dashboard', CustomerOnlyView.as_view(), name='customer-dashboard'),
     path('vendor/dashboard', VendorOnlyView.as_view(), name='vendor-dashboard'),
     path('manager/dashboard', ManagerOnlyView.as_view(), name='manager-dashboard'),
-    path('users', views.view_users, name='view-guests'),
+    path('users', view_users, name='view-guests'),
 ]
