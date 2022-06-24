@@ -5,7 +5,7 @@ from ..models import event, event_schdual
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = event
-        fields = ('name', 'type', 'location', 'Date', 'user')
+        fields = ('id','name', 'type', 'location', 'Date', 'user')
 
 
 class ScheduleSerializer(serializers.ModelSerializer):
