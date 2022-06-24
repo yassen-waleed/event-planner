@@ -37,6 +37,12 @@ class CustomerSignupSerializer(serializers.ModelSerializer):
         return user
 
 
+class UserSerializerForTable(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'phone', 'date_joined', 'is_customer', 'is_vendor', 'is_manager']
+
+
 class VendorSignupSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
 

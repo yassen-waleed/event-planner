@@ -1,13 +1,26 @@
 from django.http import request
 from rest_framework import generics, permissions, status
 from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import CustomerSignupSerializer, VendorSignupSerializer, UserSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.views import APIView
 from .permissions import IsCustomerUser, IsManagerUser, IsVendorUser
+from ..models import User
 
 
+@api_view(['GET'])
+def view_users(request):
+    # checking for the parameters from the URL
+    users = User.objects.all()
+    serializer = UserSerializerForTable(users, many=True)
+
+    # if there is something in items else raise error
+    if users:
+        return Response(serializer.data)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 class CustomerSignupView(generics.GenericAPIView):
     serializer_class = CustomerSignupSerializer
 
